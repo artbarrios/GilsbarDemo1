@@ -1,0 +1,145 @@
+@model GilsbarDemo1.Models.Person
+
+@{
+    ViewBag.Title = "Details Person";
+}
+
+<h2>Person: @Html.DisplayFor(model => model.Firstname)</h2>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CellPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manager.Firstname)
+        </dd>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.JobFlowchartDiagramData)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.JobFlowchartDiagramData)
+            </dd>
+        }
+
+        @if (User.IsInRole("Admin"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.JobTaskFlowchartDiagramData)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.JobTaskFlowchartDiagramData)
+            </dd>
+        }
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    <hr />
+    <h4>
+        Job Tasks
+        &nbsp&nbsp&nbsp
+        <small>@Html.ActionLink("Add Job Task To Person", "AddJobTaskToPerson", "Persons", new { id = Model.Id }, null)</small>
+    </h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(modelJobTask => Model.JobTasks.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelJobTask => Model.JobTasks.FirstOrDefault().Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelJobTask => Model.JobTasks.FirstOrDefault().ImageFilename)
+            </th>
+        <th></th>
+        </tr>
+@foreach (var jobTask in Model.JobTasks)    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelJobTask => jobTask.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelJobTask => jobTask.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelJobTask => jobTask.ImageFilename)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "JobTasks", new { id = jobTask.Id }, null)
+ |
+                @Html.ActionLink("Remove from List", "RemoveJobTaskFromPerson", "Persons", new { personId = Model.Id, jobTaskId = jobTask.Id }, null )
+            </td>
+        </tr>
+}
+    </table>    
+</div>
+

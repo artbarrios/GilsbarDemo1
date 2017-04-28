@@ -1,0 +1,113 @@
+@model GilsbarDemo1.Models.JobTask
+
+@{
+    ViewBag.Title = "Details JobTask";
+}
+
+<h2>Job Task: @Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageFilename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageFilename)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    <hr />
+    <h4>
+        Persons
+        &nbsp&nbsp&nbsp
+        <small>@Html.ActionLink("Add Person To Job Task", "AddPersonToJobTask", "JobTasks", new { id = Model.Id }, null)</small>
+    </h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().HomePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().CellPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().WorkPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().ManagerId)
+            </th>
+        <th></th>
+        </tr>
+@foreach (var person in Model.Persons)    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelPerson => person.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.HomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.CellPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.WorkPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.Manager.Firstname)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Persons", new { id = person.Id }, null)
+ |
+                @Html.ActionLink("Remove from List", "RemovePersonFromJobTask", "JobTasks", new { jobTaskId = Model.Id, personId = person.Id }, null )
+            </td>
+        </tr>
+}
+    </table>    
+</div>
+

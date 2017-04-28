@@ -1,0 +1,137 @@
+@model GilsbarDemo1.Models.Manager
+
+@{
+    ViewBag.Title = "Details Manager";
+}
+
+<h2>Manager: @Html.DisplayFor(model => model.Firstname)</h2>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CellPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    <hr />
+    <h4>
+        Persons
+        &nbsp&nbsp&nbsp
+        <small>@Html.ActionLink("Add Person To Manager", "AddPersonToManager", "Managers", new { id = Model.Id }, null)</small>
+    </h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().HomePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().CellPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().WorkPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelPerson => Model.Persons.FirstOrDefault().DateOfBirth)
+            </th>
+        <th></th>
+        </tr>
+@foreach (var person in Model.Persons)    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelPerson => person.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.HomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.CellPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.WorkPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPerson => person.DateOfBirth)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Persons", new { id = person.Id }, null)
+            </td>
+        </tr>
+}
+    </table>    
+</div>
+

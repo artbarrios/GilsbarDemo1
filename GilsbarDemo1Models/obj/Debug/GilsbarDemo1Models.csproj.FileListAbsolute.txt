@@ -1,0 +1,7 @@
+C:\Users\barriosa\Documents\Projects\GilsbarDemo1\GilsbarDemo1Models\bin\Debug\GilsbarDemo1Models.dll
+C:\Users\barriosa\Documents\Projects\GilsbarDemo1\GilsbarDemo1Models\bin\Debug\GilsbarDemo1Models.pdb
+C:\Users\barriosa\Documents\Projects\GilsbarDemo1\GilsbarDemo1Models\obj\Debug\GilsbarDemo1Models.dll
+C:\Users\barriosa\Documents\Projects\GilsbarDemo1\GilsbarDemo1Models\obj\Debug\GilsbarDemo1Models.pdb
+C:\Users\barriosa\Documents\Projects\GilsbarDemo1\GilsbarDemo1Models\bin\Debug\Newtonsoft.Json.dll
+C:\Users\barriosa\Documents\Projects\GilsbarDemo1\GilsbarDemo1Models\bin\Debug\Newtonsoft.Json.xml
+C:\Users\barriosa\Documents\Projects\GilsbarDemo1\GilsbarDemo1Models\obj\Debug\GilsbarDemo1Models.csprojResolveAssemblyReference.cache

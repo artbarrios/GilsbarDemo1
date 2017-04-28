@@ -1,0 +1,61 @@
+@model GilsbarDemo1.Models.Building
+
+@{
+    ViewBag.Title = "Details Building";
+}
+
+<h2>Building: @Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    <hr />
+    <h4>
+        Departments
+        &nbsp&nbsp&nbsp
+        <small>@Html.ActionLink("Add Department To Building", "AddDepartmentToBuilding", "Buildings", new { id = Model.Id }, null)</small>
+    </h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(modelDepartment => Model.Departments.FirstOrDefault().Name)
+            </th>
+        <th></th>
+        </tr>
+@foreach (var department in Model.Departments)    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelDepartment => department.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Departments", new { id = department.Id }, null)
+            </td>
+        </tr>
+}
+    </table>    
+</div>
+

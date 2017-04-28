@@ -1,0 +1,49 @@
+@model GilsbarDemo1.Models.JobTaskPersonViewModel
+
+@{
+    ViewBag.Title = "AddPersonToJobTask";
+}
+
+<h2>Job Task: @Html.DisplayFor(model => model.JobTask_Name)</h2>
+<h4>Add Person To Job Task</h4>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(model => model.JobTaskId)
+        @Html.HiddenFor(model => model.JobTask_Name)
+
+        @if (((SelectList)ViewBag.PersonId).Count() > 0)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Person_Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PersonId", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    @Html.Raw("<b>All available Persons have been added to this Job Task.</b>")
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to JobTask Detail", "Details", new { id = Model.JobTaskId } )
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
